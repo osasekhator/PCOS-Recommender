@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# 🥗 PCOS-Friendly Food Recommender (Algorithm-Powered)
+A specialized web application built to support individuals managing Polycystic Ovary Syndrome (PCOS). This tool leverages a Client-Side Algorithm derived from nutritional science principles and comprehensive data to provide personalized, PCOS-friendly food recommendations and suggests suitable alternatives.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ✨ Key Features
+🧠 Client-Side Scoring Algorithm: Utilizes custom JavaScript logic to score and filter foods based on nutrient density relevant to PCOS management (e.g., low glycemic index, anti-inflammatory properties). No backend server required for predictions.
 
-## Available Scripts
+🔎 Food Lookup & Analysis: Allows users to search for any food item and instantly view its nutritional breakdown and PCOS compatibility score.
 
-In the project directory, you can run:
+🔄 Alternative Suggestions: Recommends nutrient-similar food alternatives that meet the PCOS-friendly criteria.
 
-### `npm start`
+📊 Data-Driven Insights: All recommendations are grounded in specific nutritional data derived from the integrated dataset.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+📱 Fully Responsive Interface: Built with React for a seamless experience on desktop and mobile devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🛠️ Technology Stack
+This project is entirely client-side, making it highly efficient and easy to deploy.
 
-### `npm test`
+1. Frontend (UI & Logic)
+Framework: React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Data Logic: Custom JavaScript Scoring Logic and Filtering Algorithms
 
-### `npm run build`
+Routing: React Router DOM)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Function: Handles the user interface, executes the recommendation algorithm, and displays results.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Data Source
+Data Source: Kaggle Food Nutrition Facts Dataset (Pre-processed and bundled as static data).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Algorithm: The scoring logic is embedded directly in the React code for instant, client-side execution.
 
-### `npm run eject`
+3. Deployment Advantage
+This project is a static application and can be deployed easily to platforms like Vercel or Netlify without requiring a separate backend API or server maintenance.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+💾 Data Source
+The core intelligence of this application is derived from the Food Nutrition Facts Dataset found on Kaggle:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Nutrition Details for Most Common Foods
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Preprocessing: The raw data was cleaned and integrated into a format suitable for quick client-side lookup. Scoring logic and filters were developed based on the nutritional markers critical for PCOS management.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🚀 Local Development Setup
+Follow these steps to get a local copy of the project running on your machine.
 
-## Learn More
+Prerequisites
+Node.js (LTS version)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm (or yarn)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Installation
+Clone the Repository:
 
-### Code Splitting
+git clone [https://github.com/osasekhator/PCOS-Recommender.git](https://github.com/osasekhator/PCOS-Recommender.git)
+cd PCOS-Recommender
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Install Frontend Dependencies:
 
-### Analyzing the Bundle Size
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Start the Application:
 
-### Making a Progressive Web App
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application should open automatically in your browser at http://localhost:3000.
