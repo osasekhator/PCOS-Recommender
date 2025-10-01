@@ -36,6 +36,7 @@ This project is a static application and can be deployed easily to platforms lik
 The core intelligence of this application is derived from the Food Nutrition Facts Dataset found on Kaggle:
 
 Nutrition Details for Most Common Foods
+- link: https://www.kaggle.com/datasets/niharika41298/nutrition-details-for-most-common-foods?select=nutrients_csvfile.csv
 
 Preprocessing: The raw data was cleaned and integrated into a format suitable for quick client-side lookup. Scoring logic and filters were developed based on the nutritional markers critical for PCOS management.
 
