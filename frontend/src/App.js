@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import logo from './backend/media/pcos_logo.jpg';
+
 
 function App() {
   const [activeTab, setActiveTab] = useState("about");
@@ -191,7 +191,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <img src={logo} alt="PCOS Food App Logo" className="logo" />
+        <img src="/pcos_logo.jpg" alt="PCOS Food App Logo" className="logo" />
         <h1>PCOS Food App</h1>
       </header>
       <hr/>
