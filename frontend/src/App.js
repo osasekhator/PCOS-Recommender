@@ -214,7 +214,7 @@ function App() {
 
       {/*About Tab */}
       {activeTab === "about" && (
-        <section className="card">
+        <section>
           <h2>About The PCOS Food App ♀️</h2>
 
           <p>
@@ -269,7 +269,7 @@ function App() {
 
       {/* Recommendation Tab */}
       {activeTab === "recommend" && (
-        <section className="card">
+        <section>
           <h2>Recommend Similar Foods</h2>
 
           <form onSubmit={send}>
@@ -325,7 +325,7 @@ function App() {
 
       {/* Browse Tab */}
       {activeTab === "browse" && (
-        <section className="card">
+        <section>
           <h2>Browse by Category</h2>
 
           <select
@@ -364,7 +364,7 @@ function App() {
 
       {/* Substitute Tab */}
       {activeTab === "substitute" && (
-        <section className="card">
+        <section>
           <h2>Smart Substitutions 🔄</h2>
 
           <form onSubmit={getSubstitutes}>
@@ -404,7 +404,7 @@ function App() {
 
       {/* GI Filter Tab */}
       {activeTab === "gi" && (
-        <section className="card">
+        <section>
           <h2>GI Filter 🔍</h2>
 
           <select
@@ -447,7 +447,7 @@ function App() {
 
       {/* Meal Analyzer Tab   */}
       {activeTab === "meal" && (
-        <section className="card">
+        <section>
           <h2>Meal Analyzer 🍽️</h2>
 
           <p>Please enter your ingredients separated by commas:</p>
