@@ -266,31 +266,33 @@ function App() {
             </button>
           </form>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Food</th>
+          <div className='table-wrapper'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Food</th>
                 <th>Category</th>
                 <th>GI Category</th>
                 <th>PCOS Score</th>
                 <th>Warnings</th>
                 <th>Explanation</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {examples.map((item) => (
-                <tr key={item.Food}>
-                  <td>{item.Food}</td>
-                  <td>{item.Category}</td>
-                  <td>{item.GI_category}</td>
-                  <td>{item.PCOS_score}</td>
-                  <td>{item.warnings}</td>
-                  <td>{item.explanation}</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {examples.map((item) => (
+                  <tr key={item.Food}>
+                    <td>{item.Food}</td>
+                    <td>{item.Category}</td>
+                    <td>{item.GI_category}</td>
+                    <td>{item.PCOS_score}</td>
+                    <td>{item.warnings}</td>
+                    <td>{item.explanation}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       )}
 
@@ -311,25 +313,28 @@ function App() {
             ))}
           </select>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Food</th>
-                <th>Category</th>
-                <th>PCOS Score</th>
-              </tr>
-            </thead>
+          <div className='table-wrapper'>
 
-            <tbody>
-              {foods.map((item) => (
-                <tr key={item.Food}>
-                  <td>{item.Food}</td>
-                  <td>{item.Category}</td>
-                  <td>{item.PCOS_score}</td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Food</th>
+                  <th>Category</th>
+                  <th>PCOS Score</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {foods.map((item) => (
+                  <tr key={item.Food}>
+                    <td>{item.Food}</td>
+                    <td>{item.Category}</td>
+                    <td>{item.PCOS_score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       )}
 
@@ -351,25 +356,27 @@ function App() {
             </button>
           </form>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Food</th>
-                <th>Category</th>
-                <th>PCOS Score</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {subResults.map((item) => (
-                <tr key={item.Food}>
-                  <td>{item.Food}</td>
-                  <td>{item.Category}</td>
-                  <td>{item.PCOS_score}</td>
+          <div className='table-wrapper'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Food</th>
+                  <th>Category</th>
+                  <th>PCOS Score</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {subResults.map((item) => (
+                  <tr key={item.Food}>
+                    <td>{item.Food}</td>
+                    <td>{item.Category}</td>
+                    <td>{item.PCOS_score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       )}
 
@@ -392,27 +399,29 @@ function App() {
             <option value="High">High GI 🔴</option>
           </select>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Food</th>
-                <th>GI</th>
-                <th>GI Category</th>
-                <th>PCOS Score</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {giFoods.map((item) => (
-                <tr key={item.Food}>
-                  <td>{item.Food}</td>
-                  <td>{item.GI}</td>
-                  <td>{item.GI_category}</td>
-                  <td>{item.PCOS_score}</td>
+          <div className='table-wrapper'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Food</th>
+                  <th>GI</th>
+                  <th>GI Category</th>
+                  <th>PCOS Score</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {giFoods.map((item) => (
+                  <tr key={item.Food}>
+                    <td>{item.Food}</td>
+                    <td>{item.GI}</td>
+                    <td>{item.GI_category}</td>
+                    <td>{item.PCOS_score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       )}
 
