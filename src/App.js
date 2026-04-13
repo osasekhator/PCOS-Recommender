@@ -7,6 +7,7 @@ function App() {
 
   //shared states
   const [categories, setCategories] = useState([]);
+  const URL = "https://pcos-food-app.onrender.com";
 
   // recommend states
   const [examples, setExamples] = useState([]);
@@ -39,7 +40,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/recommend', {
+      const response = await fetch(`${URL}/recommend`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -67,7 +68,7 @@ function App() {
   //the category browsing functions
   async function getCategories() {
     try {
-      const response = await fetch('http://127.0.0.1:5000/search');
+      const response = await fetch(`${URL}/search`);
       const data = await response.json();
       setCategories(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -80,7 +81,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/specify/${category}`
+        `${URL}/specify/${category}`
       );
 
       const data = await response.json();
@@ -96,7 +97,7 @@ function App() {
     setSubLoading(true);
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/substitute', {
+      const response = await fetch(`${URL}/substitute`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -125,7 +126,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/gi/${level.toLowerCase()}`
+        `${URL}/gi/${level.toLowerCase()}`
       );
 
       const data = await response.json();
@@ -153,7 +154,7 @@ function App() {
 
         setMealItems(foodsArray);
 
-      const response = await fetch("http://127.0.0.1:5000/meal", {
+      const response = await fetch(`${URL}/meal`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
