@@ -1,38 +1,127 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: rgb(249, 223, 249);
+  flex: 1;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+/* starting stylings*/
+.logo {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  /* margin-right: 15px; */
+}
+
+
+header, footer {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+  padding: 20px;
+}
+
+hr {
+  width: 90%;
+  border: none;
+  height: 4px;
+  background-color: #d6aefe;
+  margin: 5% auto 5% auto;
+  border-radius: 5%;
+}
+
+/* tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  color: #282c34;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: #282c34 0px 2px 5px;
+  transition: all 0.2s ease;
+}
+
+.tabs button:hover {
+  background-color: rgb(249, 223, 249);
+  transform: scale(1.05);
+}
+
+/* active tab styling */
+.tabs button.active {
+  background-color: plum;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+/*input styling*/
+input {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: #282c34 0px 2px 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*styling for results containers */
+.results {
+  text-align: center;
+  margin: 5%;
+  display: block;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px;
+  box-shadow: #282c34 0px 3px 10px;
+  background-color: plum;
+  align-content: center;
+  align-items: center;
+}
+
+/* button styling */
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #282c34;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+
+/* tables styling*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  background-color: plum;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }

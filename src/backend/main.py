@@ -1,138 +1,291 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
-
-app = Flask(__name__)
-CORS(app)
-
+from difflib import get_close_matches
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import cosine_similarity
 
-# You will need to change these file paths to match your system.
-# The `r''` prefix creates a raw string, which handles backslashes correctly.
-# Try to use a relative path if possible, or ensure the file is in the same directory as the script.
-# For example: foods = pd.read_csv('foods.csv')
+app = Flask(__name__)
+CORS(app)
+
+# load the dataset
 try:
-    foods = pd.read_csv(r'C:\\Users\\Osas\\Personal_projects\\PCOS_project\\foods.csv')
+    foods = pd.read_csv('foods.csv')
+    foods = foods.fillna(0)
 except FileNotFoundError:
     print("foods.csv not found. Please update the file path.")
     exit()
 
-try:
-    nutrition = pd.read_excel(r'C:\\Users\\Osas\\Personal_projects\\PCOS_project\\nutritionalsamples.xlsx')
-except FileNotFoundError:
-    print("nutritionalsamples.xlsx not found. Please update the file path.")
-    # Exit or continue with a dummy DataFrame if the file is not essential for the rest of the script.
-    # In this case, we can continue as the main logic is based on `foods`.
-    nutrition = pd.DataFrame() # Create an empty DataFrame to prevent errors.
+# assign categories based on GI
+def gi_category(gi):
+    if pd.isna(gi):
+        return "Unknown"
+    if gi <= 55:
+        return "Low"
+    elif gi <= 69:
+        return "Medium"
+    else:
+        return "High"
 
-# 1. Calculate 'net carbs' on the nutrition DataFrame
-if not nutrition.empty and 'carbs(g)' in nutrition.columns and 'fiber(g)' in nutrition.columns:
-    nutrition['net carbs'] = nutrition['carbs(g)'] - nutrition['fiber(g)']
-    print("Nutrition DataFrame head after adding 'net carbs' column:")
-    print(nutrition.head())
+foods["GI_category"] = foods["GI"].apply(gi_category)
 
-# 2. Define the `pcos_score` function
-def pcos_score(row):
-    protein_weight = 2
-    fat_weight = -3
-    fiber_weight = 2
-    # Based on the screenshot, the 'Carbs' column is not used in the score calculation, but 'Fat' and 'Sat.Fat' are.
-    # The function definition uses 'Protein', 'Sat.Fat', 'Fiber' from the 'foods' DataFrame.
-    # This seems to be the most consistent interpretation of the screenshots.
-    # Note: There is an inconsistency in the screenshot where one function uses `sugar` and `carb_weight`, but we will stick to the one that aligns with the final `foods` DataFrame.
-    calc_score = (protein_weight * row['Protein']) + (fat_weight * row['Sat.Fat']) + (fiber_weight * row['Fiber'])
-    return calc_score
+# compute the PCOS-friendly score based on GI, fiber, protein, and carbs
+def compute_pcos_score(row):
+    score = 0
 
-# 3. Apply the `pcos_score` to the `foods` DataFrame
-foods['PCOS_score'] = foods.apply(pcos_score, axis=1)
-print("\nFoods DataFrame head after adding 'PCOS_score' column:")
-print(foods.head())
+    #GI
+    if row["GI"] <= 55:
+        score += 3
+    elif row["GI"] <= 69:
+        score += 1
+    else:
+        score -= 2
 
-# 4. Data preprocessing for cosine similarity
-# Select features as shown in the screenshot
-features = foods[['Protein', 'Fat', 'Sat.Fat', 'Fiber', 'Carbs', 'PCOS_score']].copy()
-# Handle missing values by filling with the mean
-features.fillna(features.mean(), inplace=True)
+    # Fiber
+    if row["Fiber"] >= 5:
+        score += 2
+    elif row["Fiber"] >= 2:
+        score += 1
 
-# Scale the features
-scaler = StandardScaler()
-features_scaled = scaler.fit_transform(features)
+    #Protein
+    if row["Protein"] >= 15:
+        score += 2
+    elif row["Protein"] >= 5:
+        score += 1
 
-# Calculate the cosine similarity matrix
-sim_matrix = cosine_similarity(features_scaled)
+    #placing more penalty on high carbs since they can spike insulin
+    if row["Carbs"] >= 30:
+        score -= 2
+    elif row["Carbs"] >= 15:
+        score -= 1
 
-# # 5. Define `recommend_similar` function
-# def recommend_similar(food_name, top_n=5):
-#     if food_name not in foods['Food'].values:
-#         print(f"Food '{food_name}' not found in dataset. Try one of: {list(foods['Food'].sample(5))}")
-#         return None
-#     idx = foods[foods['Food'] == food_name].index[0]
-#     sim_scores = list(enumerate(sim_matrix[idx]))
-#     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-#     top_indices = [i[0] for i in sim_scores[1:top_n+1]]
-#     return foods.iloc[top_indices][['Food', 'Category', 'PCOS_score']]
+    # Healthy fat bonus (unsaturated fats are better for PCOS than saturated fats)
+    if row["Fat"] > 0 and row["Sat.Fat"] < row["Fat"] * 0.4:
+        score += 1
 
-# # 6. Define `recommend` function
-# def recommend(df, top=10, category=None):
-#     filtered = df.copy()
-#     if category:
-#         filtered = filtered[filtered['Category'] == category]
-#     recommendation = filtered.sort_values(by='PCOS_score', ascending=False)
-#     return recommendation.head(top)
+    return score
 
-# # 7. Example usage
-# print("\n--- Example: Top 10 recommendations for 'Fruits A-F' ---")
-# recommendations_fruits = recommend(foods, 10, 'Fruits A-F')
-# print(recommendations_fruits)
+foods["PCOS_score"] = foods.apply(compute_pcos_score, axis=1)
 
-# print("\n--- Example: Foods similar to 'Shrimp' ---")
-# similar_foods_shrimp = recommend_similar("Shrimp", top_n=5)
-# if similar_foods_shrimp is not None:
-#     print(similar_foods_shrimp)
+# implement a similarity matrix based on the features
+def build_similarity_matrix(df):
+    features = df[['GI', 'Protein', 'Fat', 'Sat.Fat', 'Fiber', 'Carbs', 'PCOS_score']].copy()
+    features.fillna(features.mean(), inplace=True)
 
+    scaler = StandardScaler()
+    scaled = scaler.fit_transform(features)
 
+    return cosine_similarity(scaled)
+
+sim_matrix = build_similarity_matrix(foods)
+
+# implement a warning system for high GI, high carbs, and high saturated fat
+def get_food_warning(row):
+    warnings = []
+
+    if row["GI"] > 70:
+        warnings.append("High GI - may spike blood sugar\n")
+
+    if row["Carbs"] > 30:
+        warnings.append("High carbs\n")
+
+    if row["Sat.Fat"] > 10:
+        warnings.append("High saturated fat\n")
+
+    if warnings == []:
+        return "No major concerns"
+
+    return warnings
+
+# function to explain the PCOS score based on the food's attributes
+def explain_score(row):
+    explanation = []
+
+    if row["GI"] <= 55:
+        explanation.append("Low GI - good for blood sugar\n")
+
+    if row["Fiber"] >= 5:
+        explanation.append("High fiber - supports insulin sensitivity\n")
+
+    if row["Protein"] >= 15:
+        explanation.append("High protein - stabilizes energy\n")
+
+    if explanation == []:
+        return "This food has neutral impact on PCOS based on its attributes."
+    return explanation
+
+# food substitution logic: find foods in the same category with a better PCOS score
+def suggest_substitutes(food_name):
+    user_food = foods[foods["Food"] == food_name].iloc[0]
+
+    candidates = foods[
+        (foods["Category"] == user_food["Category"]) &
+        (foods["PCOS_score"] > user_food["PCOS_score"])
+    ]
+
+    return candidates.sort_values(by="PCOS_score", ascending=False).head(5)
+
+# meal scoring logic: basically a weighted average GI for the meal based on the GI and carb content of each item
+def meal_score(meal_items):
+    total_score = 0
+    total_carbs = 0
+
+    for item in meal_items:
+        match = find_best_match(item, foods["Food"].tolist())
+        if not match:
+            continue
+
+        food = foods[foods["Food"] == match].iloc[0]
+        total_score += food["GI"] * food["Carbs"]
+        total_carbs += food["Carbs"]
+
+    if total_carbs == 0:
+        return 0
+
+    return total_score / total_carbs
+
+# recommendation API
 @app.route('/recommend', methods=['POST'])
 def recommend_similar():
     data = request.get_json()
     food_name = data.get("food")
-    try:
-        top_n = int(data.get("top", 5))  # default to 5 if missing
-    except (ValueError, TypeError):
-        return jsonify({"error": "Invalid 'top' value, must be an integer"}), 400
+    top_n = int(data.get("top", 5))
 
-    if food_name not in foods['Food'].values:
-        # print(f"Food '{food_name}' not found in dataset. Try one of: {list(foods['Food'].sample(5))}")
-        return jsonify({"error": f"Food '{food_name}' not found"}), 404
-    idx = foods[foods['Food'] == food_name].index[0]
+    food_list = foods['Food'].tolist()
+    matched_food = find_best_match(food_name, food_list)
+
+    if not matched_food:
+        return jsonify({"error": f"No similar food found for '{food_name}'"}), 404
+
+    category = foods.loc[foods['Food'] == matched_food, 'Category'].values[0]
+    category_foods = foods[foods['Category'] == category].reset_index(drop=True)
+
+    sim_matrix = build_similarity_matrix(category_foods)
+
+    idx = category_foods[category_foods['Food'] == matched_food].index[0]
+
     sim_scores = list(enumerate(sim_matrix[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    top_indices = [i[0] for i in sim_scores[1:top_n+1]]
-    results = foods.iloc[top_indices][['Food', 'Category', 'PCOS_score']]
-    return jsonify(results.to_dict(orient="records"))
 
+    top_indices = [i[0] for i in sim_scores[1:top_n+1]]
+    results = category_foods.iloc[top_indices]
+
+    response = []
+    for _, row in results.iterrows():
+        response.append({
+            "Food": row["Food"],
+            "Category": row["Category"],
+            "GI": row["GI"],
+            "GI_category": row["GI_category"],
+            "PCOS_score": row["PCOS_score"],
+            "warnings": get_food_warning(row),
+            "explanation": explain_score(row)
+        })
+
+    return jsonify(response)
+
+# SUBSTITUTES API
+@app.route('/substitute', methods=['POST'])
+def substitute():
+    data = request.get_json()
+    food_name = data.get("food")
+
+    matched = find_best_match(food_name, foods["Food"].tolist())
+
+    if not matched:
+        return jsonify({"error": "Food not found"}), 404
+
+    user_food = foods[foods["Food"] == matched].iloc[0]
+
+    candidates = foods[
+        (foods["Category"] == user_food["Category"]) &
+        (foods["PCOS_score"] > user_food["PCOS_score"])
+    ].sort_values(by="PCOS_score", ascending=False).head(5)
+
+    return jsonify(candidates.to_dict(orient="records"))
+
+# GI filter API
+@app.route('/gi/<string:level>', methods=['GET'])
+def filter_by_gi(level):
+    level = level.lower()
+
+    if level == "low":
+        filtered = foods[foods["GI"] <= 55]
+    elif level == "medium":
+        filtered = foods[(foods["GI"] > 55) & (foods["GI"] <= 69)]
+    elif level == "high":
+        filtered = foods[foods["GI"] >= 70]
+    else:
+        return jsonify({"error": "Invalid GI level"}), 400
+
+    return jsonify(filtered.to_dict(orient="records"))
+
+# meal API
+@app.route('/meal', methods=['POST'])
+def analyze_meal():
+    data = request.get_json()
+    meal_items = data.get("foods", [])
+
+    total_score = 0
+    total_carbs = 0
+
+    for item in meal_items:
+        match = find_best_match(item, foods["Food"].tolist())
+        if not match:
+            continue
+
+        food = foods[foods["Food"] == match].iloc[0]
+        total_score += float(food["GI"]) * food["Carbs"]
+        total_carbs += food["Carbs"]
+
+    meal_gi = total_score / total_carbs if total_carbs != 0 else 0
+
+    return jsonify({
+        "meal_gi": meal_gi,
+        "message": f'Your meal\'s GI score is {gi_category(meal_gi)} for PCOS'
+    })
+
+# simple endpoints to get all unique categories for dropdowns
 @app.route('/search', methods=['GET'])
 def get_categories():
-    try:
-        # Get unique categories and format them as a list of dictionaries
-        unique_categories = foods['Category'].unique()
-        category_list = [{'Category': cat} for cat in unique_categories]
-        return jsonify(category_list)
-    except KeyError:
-        return jsonify({"error": "The 'Category' column was not found in the dataset."}), 500
-    
+    unique_categories = foods['Category'].unique()
+    return jsonify([{'Category': cat} for cat in unique_categories])
+
 @app.route('/specify/<string:category>', methods=['GET'])
 def specify(category):
-    try:
-        filtered = foods[foods['Category'] == category]
-        filtered = filtered.sort_values(by='PCOS_score', ascending=False)
-        results = filtered.to_dict(orient="records")
-        return jsonify(results)
-    except KeyError:
-        return jsonify({"error": "The 'Category' column was not found in the dataset or an invalid category was provided."}), 500
+    print("Requested category:", repr(category))
+    print("Available categories:", foods["Category"].unique())
 
+    print("MATCH COUNT:", len(foods[foods["Category"] == category]))
+
+    filtered = foods[foods['Category'] == category]
+    filtered = filtered.sort_values(by='PCOS_score', ascending=False)
+
+    print("Filtered foods:", filtered[["Food", "PCOS_score"]].head())
+    return jsonify(filtered.to_dict(orient="records"))
+
+# food matching logic: exact match > partial match > close match using difflib
+def find_best_match(user_input, food_list):
+    user_input = user_input.lower().strip()
+    normalized_foods = [f.lower().strip() for f in food_list]
+
+    for food in food_list:
+        if user_input == food.lower().strip():
+            return food
+
+    for food in food_list:
+        if user_input in food.lower():
+            return food
+
+    matches = get_close_matches(user_input, normalized_foods, n=1, cutoff=0.3)
+
+    if matches:
+        for food in food_list:
+            if food.lower().strip() == matches[0]:
+                return food
+
+    return None
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
