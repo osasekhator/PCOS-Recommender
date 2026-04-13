@@ -1,19 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .App {
   text-align: center;
   background-color: rgb(249, 223, 249);
-  flex: 1;
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* starting stylings*/
 .logo {
-  width: 40%;
-  height: 40%;
-  border-radius: 50%;
-  /* margin-right: 15px; */
+    border-radius: 50%;
+    height: 40%;
+    width: 40%;
 }
 
 
@@ -23,6 +31,8 @@ header, footer {
   justify-content: center;
   gap: 20px;
   padding: 20px;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 hr {
@@ -40,6 +50,8 @@ hr {
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
+  flex-wrap: wrap;
+  padding: 0 10px;
 }
 
 .tabs button {
@@ -98,6 +110,7 @@ button {
   background-color: #282c34;
   color: white;
   cursor: pointer;
+  max-width: 200px;
 }
 
 button:hover {
@@ -110,6 +123,14 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
+  min-width: 600px; /* prevents squishing but allows scroll */
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 th {
@@ -124,4 +145,33 @@ th, td {
 
 tr:hover {
   background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* responsive design for smaller screens */
+@media (max-width: 600px) {
+  .tabs button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+  }
+
+  .results {
+    margin: 10px;
+    padding: 10px;
+    display: block;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px;
+    box-shadow: #282c34 0px 3px 10px;
+    background-color: plum;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
 }
