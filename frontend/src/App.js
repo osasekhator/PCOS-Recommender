@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-//import logo from '/pcos_logo.png';
+import logo from './backend/media/pcos_logo.jpg';
 
 function App() {
   const [activeTab, setActiveTab] = useState("about");
 
   //shared states
   const [categories, setCategories] = useState([]);
-  const URL = "https://pcos-food-app.onrender.com";
 
   // recommend states
   const [examples, setExamples] = useState([]);
@@ -40,7 +39,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${URL}/recommend`, {
+      const response = await fetch('http://127.0.0.1:5000/recommend', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -68,7 +67,7 @@ function App() {
   //the category browsing functions
   async function getCategories() {
     try {
-      const response = await fetch(`${URL}/search`);
+      const response = await fetch('http://127.0.0.1:5000/search');
       const data = await response.json();
       setCategories(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -81,7 +80,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `${URL}/specify/${category}`
+        `http://127.0.0.1:5000/specify/${category}`
       );
 
       const data = await response.json();
@@ -97,7 +96,7 @@ function App() {
     setSubLoading(true);
 
     try {
-      const response = await fetch(`${URL}/substitute`, {
+      const response = await fetch('http://127.0.0.1:5000/substitute', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -126,7 +125,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `${URL}/gi/${level.toLowerCase()}`
+        `http://127.0.0.1:5000/gi/${level.toLowerCase()}`
       );
 
       const data = await response.json();
@@ -154,7 +153,7 @@ function App() {
 
         setMealItems(foodsArray);
 
-      const response = await fetch(`${URL}/meal`, {
+      const response = await fetch("http://127.0.0.1:5000/meal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -192,7 +191,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <img src="/pcos_logo.jpg" alt="PCOS Food App Logo" className="logo" />
+        <img src={logo} alt="PCOS Food App Logo" className="logo" />
         <h1>PCOS Food App</h1>
       </header>
       <hr/>
@@ -231,6 +230,33 @@ function App() {
             <li>Analyzes meals based on nutritional composition</li>
           </ul>
 
+          <h3>Understanding the Metrics 📊</h3>
+
+          <div className="info-section">
+            <h4>Glycemic Index (GI)</h4>
+            <p>
+              The Glycemic Index (GI) measures how quickly a food raises blood sugar levels.
+              Lower GI foods cause a slower rise in blood sugar and are generally better for
+              managing insulin levels, which is especially important for individuals with PCOS.
+            </p>
+            <ul>
+              <li><b>Low GI:</b> 55 or less (preferred) 🟢</li>
+              <li><b>Medium GI:</b> 56–69 🟡</li>
+              <li><b>High GI:</b> 70+ 🔴</li>
+            </ul>
+
+            <h4>PCOS Score</h4>
+            <p>
+              The PCOS Score is a custom metric used in this application to evaluate how suitable
+              a food may be for individuals with PCOS. It considers factors such as glycemic index,
+              nutritional composition, and overall impact on blood sugar and hormone balance.
+            </p>
+            <p>
+              Higher scores generally indicate more PCOS-friendly food options, while lower scores
+              may suggest foods to consume in moderation.
+            </p>
+          </div>
+
           <h3>Disclaimer ⚠️</h3>
           <p style={{ color: "darkred", fontWeight: "bold" }}>
             This application is for educational and informational purposes only.
@@ -267,15 +293,16 @@ function App() {
           </form>
 
           <div className='table-wrapper'>
+
             <table>
               <thead>
                 <tr>
                   <th>Food</th>
-                <th>Category</th>
-                <th>GI Category</th>
-                <th>PCOS Score</th>
-                <th>Warnings</th>
-                <th>Explanation</th>
+                  <th>Category</th>
+                  <th>GI Category</th>
+                  <th>PCOS Score</th>
+                  <th>Warnings</th>
+                  <th>Explanation</th>
                 </tr>
               </thead>
 
@@ -313,28 +340,25 @@ function App() {
             ))}
           </select>
 
-          <div className='table-wrapper'>
+          <table>
+            <thead>
+              <tr>
+                <th>Food</th>
+                <th>Category</th>
+                <th>PCOS Score</th>
+              </tr>
+            </thead>
 
-            <table>
-              <thead>
-                <tr>
-                  <th>Food</th>
-                  <th>Category</th>
-                  <th>PCOS Score</th>
+            <tbody>
+              {foods.map((item) => (
+                <tr key={item.Food}>
+                  <td>{item.Food}</td>
+                  <td>{item.Category}</td>
+                  <td>{item.PCOS_score}</td>
                 </tr>
-              </thead>
-
-              <tbody>
-                {foods.map((item) => (
-                  <tr key={item.Food}>
-                    <td>{item.Food}</td>
-                    <td>{item.Category}</td>
-                    <td>{item.PCOS_score}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </section>
       )}
 
@@ -356,27 +380,25 @@ function App() {
             </button>
           </form>
 
-          <div className='table-wrapper'>
-            <table>
-              <thead>
-                <tr>
-                  <th>Food</th>
-                  <th>Category</th>
-                  <th>PCOS Score</th>
-                </tr>
-              </thead>
+          <table>
+            <thead>
+              <tr>
+                <th>Food</th>
+                <th>Category</th>
+                <th>PCOS Score</th>
+              </tr>
+            </thead>
 
-              <tbody>
-                {subResults.map((item) => (
-                  <tr key={item.Food}>
-                    <td>{item.Food}</td>
-                    <td>{item.Category}</td>
-                    <td>{item.PCOS_score}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <tbody>
+              {subResults.map((item) => (
+                <tr key={item.Food}>
+                  <td>{item.Food}</td>
+                  <td>{item.Category}</td>
+                  <td>{item.PCOS_score}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
       )}
 
@@ -399,29 +421,27 @@ function App() {
             <option value="High">High GI 🔴</option>
           </select>
 
-          <div className='table-wrapper'>
-            <table>
-              <thead>
-                <tr>
-                  <th>Food</th>
-                  <th>GI</th>
-                  <th>GI Category</th>
-                  <th>PCOS Score</th>
-                </tr>
-              </thead>
+          <table>
+            <thead>
+              <tr>
+                <th>Food</th>
+                <th>GI</th>
+                <th>GI Category</th>
+                <th>PCOS Score</th>
+              </tr>
+            </thead>
 
-              <tbody>
-                {giFoods.map((item) => (
-                  <tr key={item.Food}>
-                    <td>{item.Food}</td>
-                    <td>{item.GI}</td>
-                    <td>{item.GI_category}</td>
-                    <td>{item.PCOS_score}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <tbody>
+              {giFoods.map((item) => (
+                <tr key={item.Food}>
+                  <td>{item.Food}</td>
+                  <td>{item.GI}</td>
+                  <td>{item.GI_category}</td>
+                  <td>{item.PCOS_score}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
       )}
 

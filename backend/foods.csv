@@ -109,7 +109,7 @@ Cauliflower,1 cup,120,30,3,0,0,1,6,Vegetables A-E,10
 Celery,1 cup,100,20,1,0,0,1,4,Vegetables A-E,15
 Celery stalk raw,1 large,40,5,1,0,0,0.3,1,Vegetables A-E,15
 Chard steamed,1 cup,150,30,2,0,0,1.4,7,Vegetables A-E,15
-Collards,1 cup,150,51,5,0,0,2,8,Vegetables A-E,15
+Collards greens,1 cup,150,51,5,0,0,2,8,Vegetables A-E,15
 Corn,1 ear,100,92,3,1,0,0.8,21,Vegetables A-E,52
 cooked or canned corn,1 cup,200,170,5,0,0,1.6,41,Vegetables A-E,60
 Cucumbers,8,50,6,0,0,0,0.2,1,Vegetables A-E,15
@@ -220,7 +220,7 @@ Biscuits,1,38,130,3,4,3,0,18,"Breads, cereals, fastfood,grains",70
 Bran flakes,1 cup,25,117,3,0,0,0.1,32,"Breads, cereals, fastfood,grains",74
 "Bread, cracked wheat",1 slice,23,60,2,1,1,0.1,12,"Breads, cereals, fastfood,grains",50
 Rye,1 slice,23,55,2,1,1,0.1,12,"Breads, cereals, fastfood,grains",41
-"White, 20 slices, or",1-lb. loaf,454,"1,225",39,15,12,9,229,"Breads, cereals, fastfood,grains",80
+"White, 20 slices",1-lb. loaf,454,"1,225",39,15,12,9,229,"Breads, cereals, fastfood,grains",80
 Whole-wheat (loaf),1-lb. loaf,454,"1,100",48,14,10,67.5,216,"Breads, cereals, fastfood,grains",65
 Whole-wheat (slice),1 slice,23,55,2,1,0,0.31,11,"Breads, cereals, fastfood,grains",65
 Corn bread ground meal,1 serving,50,100,3,4,2,0.3,15,"Breads, cereals, fastfood,grains",70

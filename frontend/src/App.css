@@ -44,6 +44,20 @@ hr {
   border-radius: 5%;
 }
 
+.info-section {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.info-section h4 {
+  margin-top: 15px;
+  color: #6a0dad;
+}
+
+.info-section ul {
+  padding-left: 20px;
+}
+
 /* tabs */
 .tabs {
   display: flex;
@@ -75,6 +89,14 @@ hr {
 .tabs button.active {
   background-color: plum;
   color: white;
+}
+
+.card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: #282c34 0px 3px 10px;
 }
 
 
@@ -144,7 +166,7 @@ th, td {
 }
 
 tr:hover {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgb(249, 223, 249);
 }
 
 /* responsive design for smaller screens */
