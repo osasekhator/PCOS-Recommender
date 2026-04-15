@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+
 /** Draggable meal builder */
 export default function MealBuilder({ mealItems, setMealItems, onAnalyze, mealLoading }) {
   const [search, setSearch] = useState('');
