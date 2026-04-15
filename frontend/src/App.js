@@ -345,7 +345,6 @@ function App() {
               <thead>
                 <tr>
                   <th>Food</th>
-                  <th>Category</th>
                   <th>PCOS Score</th>
                 </tr>
               </thead>
@@ -354,7 +353,6 @@ function App() {
                 {foods.map((item) => (
                   <tr key={item.Food}>
                     <td>{item.Food}</td>
-                    <td>{item.Category}</td>
                     <td>{item.PCOS_score}</td>
                   </tr>
                 ))}
