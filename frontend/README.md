@@ -20,8 +20,6 @@ Framework: React
 
 Data Logic: Custom JavaScript Scoring Logic and Filtering Algorithms
 
-Routing: React Router DOM)
-
 Function: Handles the user interface, executes the recommendation algorithm, and displays results.
 
 2. Data Source
@@ -30,7 +28,7 @@ Data Source: Kaggle Food Nutrition Facts Dataset (Pre-processed and bundled as s
 Algorithm: The scoring logic is embedded directly in the React code for instant, client-side execution.
 
 3. Deployment Advantage
-This project is a static application and can be deployed easily to platforms like Vercel or Netlify without requiring a separate backend API or server maintenance.
+Deployed Backend using free version of Render, which unfortunately results in a lot of downtime, and Frontend using Vercel. Click the link to try it out: https://pcos-recommender-qgbk.vercel.app/
 
 💾 Data Source
 The core intelligence of this application is derived from the Food Nutrition Facts Dataset found on Kaggle:
@@ -38,28 +36,7 @@ The core intelligence of this application is derived from the Food Nutrition Fac
 Nutrition Details for Most Common Foods
 - link: https://www.kaggle.com/datasets/niharika41298/nutrition-details-for-most-common-foods?select=nutrients_csvfile.csv
 
-Preprocessing: The raw data was cleaned and integrated into a format suitable for quick client-side lookup. Scoring logic and filters were developed based on the nutritional markers critical for PCOS management.
+Preprocessing: The raw data was cleaned and integrated into a format suitable for quick client-side lookup. To attain my goal, I had to add a column, "GI", to the actual dataset. I achieved these values with the help of generative AI, namely, ChatGPT. Scoring logic and filters were developed based on the nutritional markers critical for PCOS management.
 
-🚀 Local Development Setup
-Follow these steps to get a local copy of the project running on your machine.
-
-Prerequisites
-Node.js (LTS version)
-
-npm (or yarn)
-
-Installation
-Clone the Repository:
-
-git clone [https://github.com/osasekhator/PCOS-Recommender.git](https://github.com/osasekhator/PCOS-Recommender.git)
-cd PCOS-Recommender
-
-Install Frontend Dependencies:
-
-npm install
-
-Start the Application:
-
-npm start
-
-The application should open automatically in your browser at http://localhost:3000.
+🤖 AI Usage:
+I used `ChatGPT` to generate the values I have for the column, "GI". Additionally, I used VSCode's `IntelliSense` to generate informative comments for complex implementations and it also helped me with stlying for smaller screens. Another thing I used ChatGPT for, was deciding what weights and penalties to assign to certain nutrients.
