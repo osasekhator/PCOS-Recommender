@@ -2,16 +2,15 @@ Food,Measure,Grams,Calories,Protein,Fat,Sat.Fat,Fiber,Carbs,Category,GI
 Cows' milk,1 qt.,976,660,32,40,36,0,48,Dairy products,33
 Milk skim,1 qt.,984,360,36,0,0,0,52,Dairy products,33
 Buttermilk,1 cup,246,127,9,5,4,0,13,Dairy products,35
-"Evaporated, undiluted",1 cup,252,345,16,20,18,0,24,Dairy products,33
+"Evaporated, undiluted milk",1 cup,252,345,16,20,18,0,24,Dairy products,33
 Fortified milk,1 cups,237,229,14.8,7,3.8,0.2,19.8,Dairy products,33
 Powdered milk,1 cup,103,515,27,28,24,0,39,Dairy products,35
-"skim, instant",1 1/3 cups,85,290,30,0,0,0,42,Dairy products,40
-"skim, non-instant",2/3 cup,85,290,30,0,0,1,42,Dairy products,40
+"skim, instant milk",1 1/3 cups,85,290,30,0,0,0,42,Dairy products,40
+"skim, non-instant milk",2/3 cup,85,290,30,0,0,1,42,Dairy products,40
 Goats' milk,1 cup,244,165,8,10,8,0,11,Dairy products,30
-(1/2 cup ice cream),2 cups,540,690,24,24,22,0,70,Dairy products,60
 Cocoa,1 cup,252,235,8,11,10,0,26,Dairy products,60
-skim. milk,1 cup,250,128,18,4,3,1,13,Dairy products,30
-(cornstarch),1 cup,248,275,9,10,9,0,40,Dairy products,95
+skim milk,1 cup,250,128,18,4,3,1,13,Dairy products,30
+cornstarch,1 cup,248,275,9,10,9,0,40,Dairy products,95
 Custard,1 cup,248,285,13,14,11,0,28,Dairy products,50
 Ice cream,1 cup,188,300,6,18,16,0,29,Dairy products,60
 Ice milk,1 cup,190,275,9,10,9,0,32,Dairy products,55
@@ -24,7 +23,7 @@ Cheddar,1-in. cube,17,70,4,6,5,0,0,Dairy products,0
 Cream cheese,1 oz.,28,105,2,11,10,0,1,Dairy products,0
 Processed cheese,1 oz.,28,105,7,9,8,0,0,Dairy products,0
 Roquefort type,1 oz.,28,105,6,9,8,0,0,Dairy products,0
-Swiss,1 oz.,28,105,7,8,7,0,0,Dairy products,0
+Swiss cheese,1 oz.,28,105,7,8,7,0,0,Dairy products,0
 Eggs raw,2,100,150,12,12,10,0,0,Dairy products,0
 Eggs Scrambled or fried,2,128,220,13,16,14,0,1,Dairy products,5
 Yolks,2,34,120,6,10,8,0,0,"Fats, Oils, Shortenings",0
@@ -216,51 +215,51 @@ Strawberries,1 cup,227,242,1,0,0,1.3,60,Fruits R-Z,40
 Raw strawberries,1 cup,149,54,0,0,0,1.9,12,Fruits R-Z,40
 Tangerines,I med.,114,40,1,0,0,1,10,Fruits R-Z,30
 Watermelon,1 wedge,925,120,2,1,0,3.6,29,Fruits R-Z,72
-Biscuits,1,38,130,3,4,3,0,18,"Breads, cereals, fastfood,grains",70
-Bran flakes,1 cup,25,117,3,0,0,0.1,32,"Breads, cereals, fastfood,grains",74
-"Bread, cracked wheat",1 slice,23,60,2,1,1,0.1,12,"Breads, cereals, fastfood,grains",50
-Rye,1 slice,23,55,2,1,1,0.1,12,"Breads, cereals, fastfood,grains",41
-"White, 20 slices",1-lb. loaf,454,"1,225",39,15,12,9,229,"Breads, cereals, fastfood,grains",80
-Whole-wheat (loaf),1-lb. loaf,454,"1,100",48,14,10,67.5,216,"Breads, cereals, fastfood,grains",65
-Whole-wheat (slice),1 slice,23,55,2,1,0,0.31,11,"Breads, cereals, fastfood,grains",65
-Corn bread ground meal,1 serving,50,100,3,4,2,0.3,15,"Breads, cereals, fastfood,grains",70
-Cornflakes,1 cup,25,110,2,0,0,0.1,25,"Breads, cereals, fastfood,grains",81
-Corn grits cooked,1 cup,242,120,8,0,0,0.2,27,"Breads, cereals, fastfood,grains",69
-Corn meal,1 cup,118,360,9,4,2,1.6,74,"Breads, cereals, fastfood,grains",68
-Crackers,2 med.,14,55,1,1,0,0,10,"Breads, cereals, fastfood,grains",70
-"Soda, 2 1/2 square",2,11,45,1,1,0,0,8,"Breads, cereals, fastfood,grains",72
-Farina,1 cup,238,105,3,0,0,8,22,"Breads, cereals, fastfood,grains",66
-Flour,1 cup,110,460,39,22,0,2.9,33,"Breads, cereals, fastfood,grains",85
-Wheat (all purpose flour),1 cup,110,400,12,1,0,0.3,84,"Breads, cereals, fastfood,grains",85
-Wheat (whole flour),1 cup,120,390,13,2,0,2.8,79,"Breads, cereals, fastfood,grains",65
-Macaroni,1 cup,140,155,5,1,0,0.1,32,"Breads, cereals, fastfood,grains",50
-macaroni and cheese,1 cup,220,475,18,25,24,0,44,"Breads, cereals, fastfood,grains",65
-Muffins,1,48,135,4,5,4,0,19,"Breads, cereals, fastfood,grains",65
-Noodles,1 cup,160,200,7,2,2,0.1,37,"Breads, cereals, fastfood,grains",50
-Oatmeal,1 cup,236,150,5,3,2,4.6,26,"Breads, cereals, fastfood,grains",55
-"Pancakes 4"" diam.",4,108,250,7,9,0,0.1,28,"Breads, cereals, fastfood,grains",67
-"Wheat, pancakes 4"" diam.",4,108,250,7,9,0,0.1,28,"Breads, cereals, fastfood,grains",62
-"Pizza 14"" diam.",1 section,75,180,8,6,5,0,23,"Breads, cereals, fastfood,grains",60
-Popcorn salted,2 cups,28,152,3,7,2,0.5,20,"Breads, cereals, fastfood,grains",55
-Puffed rice,1 cup,14,55,0,0,0,0,12,"Breads, cereals, fastfood,grains",82
-Puffed wheat presweetened,1 cup,28,105,1,0,0,0.6,26,"Breads, cereals, fastfood,grains",74
-Rice,1 cup,208,748,15,3,0,1.2,154,"Breads, cereals, fastfood,grains",70
-Converted rice,1 cup,187,677,14,0,0,0.4,142,"Breads, cereals, fastfood,grains",60
-White rice,1 cup,191,692,14,0,0,0.3,150,"Breads, cereals, fastfood,grains",89
-Rice flakes,1 cup,30,115,2,0,0,0.1,26,"Breads, cereals, fastfood,grains",82
-Rice polish,1/2 cup,50,132,6,6,0,1.2,28,"Breads, cereals, fastfood,grains",60
-Bread Rolls,1 large,50,411,3,12,11,0.1,23,"Breads, cereals, fastfood,grains",73
-Bread rolls of refined flour,1,38,115,3,2,2,0,20,"Breads, cereals, fastfood,grains",73
-whole-wheat bread rolls,1,40,102,4,1,0,0.1,20,"Breads, cereals, fastfood,grains",65
-Spaghetti with meat sauce,1 cup,250,285,13,10,6,0.5,35,"Breads, cereals, fastfood,grains",45
-Spaghetti with tomatoes and cheese,1 cup,250,210,6,5,3,0.5,36,"Breads, cereals, fastfood,grains",50
-Spanish rice,1 cup,250,217,4,4,0,1.2,40,"Breads, cereals, fastfood,grains",57
-Shredded wheat biscuit,1,28,100,3,1,0,0.7,23,"Breads, cereals, fastfood,grains",67
-Waffles,1,75,240,8,9,1,0.1,30,"Breads, cereals, fastfood,grains",75
-Wheat germ,1 cup,68,245,17,7,3,2.5,34,"Breads, cereals, fastfood,grains",15
-Wheat-germ cereal toasted,1 cup,65,260,20,7,3,2.5,36,"Breads, cereals, fastfood,grains",50
-Wheat meal cereal unrefined,3/4 cup,30,103,4,1,0,0.7,25,"Breads, cereals, fastfood,grains",52
-"Wheat, cooked",3/4 cup,200,275,12,1,0,4.4,35,"Breads, cereals, fastfood,grains",45
+Biscuits,1,38,130,3,4,3,0,18,Cereals and grains,70
+Bran flakes,1 cup,25,117,3,0,0,0.1,32,Cereals and grains,74
+"Bread, cracked wheat",1 slice,23,60,2,1,1,0.1,12,Cereals and grains,50
+Rye,1 slice,23,55,2,1,1,0.1,12,Cereals and grains,41
+White bread,1-lb. loaf,454,"1,225",39,15,12,9,229,Cereals and grains,80
+Whole-wheat (loaf),1-lb. loaf,454,"1,100",48,14,10,67.5,216,Cereals and grains,65
+Whole-wheat (slice),1 slice,23,55,2,1,0,0.31,11,Cereals and grains,65
+Corn bread ground meal,1 serving,50,100,3,4,2,0.3,15,Cereals and grains,70
+Cornflakes,1 cup,25,110,2,0,0,0.1,25,Cereals and grains,81
+Corn grits cooked,1 cup,242,120,8,0,0,0.2,27,Cereals and grains,69
+Corn meal,1 cup,118,360,9,4,2,1.6,74,Cereals and grains,68
+Crackers,2 med.,14,55,1,1,0,0,10,Cereals and grains,70
+"Soda, 2 1/2 square",2,11,45,1,1,0,0,8,Cereals and grains,72
+Farina,1 cup,238,105,3,0,0,8,22,Cereals and grains,66
+Flour,1 cup,110,460,39,22,0,2.9,33,Cereals and grains,85
+Wheat (all purpose flour),1 cup,110,400,12,1,0,0.3,84,Cereals and grains,85
+Wheat (whole flour),1 cup,120,390,13,2,0,2.8,79,Cereals and grains,65
+Macaroni,1 cup,140,155,5,1,0,0.1,32,Cereals and grains,50
+macaroni and cheese,1 cup,220,475,18,25,24,0,44,Cereals and grains,65
+Muffins,1,48,135,4,5,4,0,19,Cereals and grains,65
+Noodles,1 cup,160,200,7,2,2,0.1,37,Cereals and grains,50
+Oatmeal,1 cup,236,150,5,3,2,4.6,26,Cereals and grains,55
+"Pancakes 4"" diam.",4,108,250,7,9,0,0.1,28,Cereals and grains,67
+"Wheat, pancakes 4"" diam.",4,108,250,7,9,0,0.1,28,Cereals and grains,62
+"Pizza 14"" diam.",1 section,75,180,8,6,5,0,23,Cereals and grains,60
+Popcorn salted,2 cups,28,152,3,7,2,0.5,20,Cereals and grains,55
+Puffed rice,1 cup,14,55,0,0,0,0,12,Cereals and grains,82
+Puffed wheat presweetened,1 cup,28,105,1,0,0,0.6,26,Cereals and grains,74
+Rice,1 cup,208,748,15,3,0,1.2,154,Cereals and grains,70
+Converted rice,1 cup,187,677,14,0,0,0.4,142,Cereals and grains,60
+White rice,1 cup,191,692,14,0,0,0.3,150,Cereals and grains,89
+Rice flakes,1 cup,30,115,2,0,0,0.1,26,Cereals and grains,82
+Rice polish,1/2 cup,50,132,6,6,0,1.2,28,Cereals and grains,60
+Bread Rolls,1 large,50,411,3,12,11,0.1,23,Cereals and grains,73
+Bread rolls of refined flour,1,38,115,3,2,2,0,20,Cereals and grains,73
+whole-wheat bread rolls,1,40,102,4,1,0,0.1,20,Cereals and grains,65
+Spaghetti with meat sauce,1 cup,250,285,13,10,6,0.5,35,Cereals and grains,45
+Spaghetti with tomatoes and cheese,1 cup,250,210,6,5,3,0.5,36,Cereals and grains,50
+Spanish rice,1 cup,250,217,4,4,0,1.2,40,Cereals and grains,57
+Shredded wheat biscuit,1,28,100,3,1,0,0.7,23,Cereals and grains,67
+Waffles,1,75,240,8,9,1,0.1,30,Cereals and grains,75
+Wheat germ,1 cup,68,245,17,7,3,2.5,34,Cereals and grains,15
+Wheat-germ cereal toasted,1 cup,65,260,20,7,3,2.5,36,Cereals and grains,50
+Wheat meal cereal unrefined,3/4 cup,30,103,4,1,0,0.7,25,Cereals and grains,52
+"Wheat, cooked",3/4 cup,200,275,12,1,0,4.4,35,Cereals and grains,45
 Bean soups,1 cup,250,190,8,5,4,0.6,30,Soups,38
 Beef soup,1 cup,250,100,6,4,4,0.5,11,Soups,20
 Bouillon,1 cup,240,24,5,0,0,0,0,Soups,0
