@@ -192,12 +192,12 @@ function App() {
   return (
     <div className="App">
       <header>
-        <img src="/pcos_logo.jpg" alt="PCOS Food App Logo" className="logo" />
-        <h1>PCOS Food App</h1>
+        <img src="/pcos_logo.jpg" alt="PMOS Food App Logo" className="logo" />
+        <h1>PMOS Food App</h1>
       </header>
       <hr/>
       
-      <p>Smart food insights for PCOS management 🍎</p>
+      <p>Smart food insights for PMOS management 🍎</p>
 
       {/* initialize tab selection buttons */}
       <div className="tabs">
@@ -216,11 +216,11 @@ function App() {
       {/*About Tab */}
       {activeTab === "about" && (
         <section>
-          <h2>About The PCOS Food App ♀️</h2>
+          <h2>About The PMOS Food App ♀️</h2>
 
           <p>
             This application is intended to help women explore food options and make more informed
-            dietary choices that may support PCOS-friendly eating habits.
+            dietary choices that may support PMOS-friendly eating habits.
           </p>
 
           <h3>How it works</h3>
@@ -238,7 +238,7 @@ function App() {
             <p>
               The Glycemic Index (GI) measures how quickly a food raises blood sugar levels.
               Lower GI foods cause a slower rise in blood sugar and are generally better for
-              managing insulin levels, which is especially important for individuals with PCOS.
+              managing insulin levels, which is especially important for women with PMOS.
             </p>
             <ul>
               <li><b>Low GI:</b> 55 or less (preferred) 🟢</li>
@@ -246,14 +246,14 @@ function App() {
               <li><b>High GI:</b> 70+ 🔴</li>
             </ul>
 
-            <h4>PCOS Score</h4>
+            <h4>PMOS Score</h4>
             <p>
-              The PCOS Score is a custom metric used in this application to evaluate how suitable
-              a food may be for individuals with PCOS. It considers factors such as glycemic index,
+              The PMOS Score is a custom metric used in this application to evaluate how suitable
+              a food may be for individuals with PMOS. It considers factors such as glycemic index,
               nutritional composition, and overall impact on blood sugar and hormone balance.
             </p>
             <p>
-              Higher scores generally indicate more PCOS-friendly food options, while lower scores
+              Higher scores generally indicate more PMOS-friendly food options, while lower scores
               may suggest foods to consume in moderation.
             </p>
           </div>
@@ -263,7 +263,7 @@ function App() {
             This application is for educational and informational purposes only.
             It is not intended to provide medical advice, diagnosis, or treatment.
             Always consult a qualified healthcare professional or registered dietitian
-            before making dietary or health decisions related to PCOS or any medical condition.
+            before making dietary or health decisions related to PMOS or any medical condition.
           </p>
         </section>
       )}
@@ -300,7 +300,7 @@ function App() {
                   <th>Food</th>
                   <th>Category</th>
                   <th>GI Category</th>
-                  <th>PCOS Score</th>
+                  <th>PMOS Score</th>
                   <th>Warnings</th>
                   <th>Explanation</th>
                 </tr>
@@ -345,7 +345,7 @@ function App() {
               <thead>
                 <tr>
                   <th>Food</th>
-                  <th>PCOS Score</th>
+                  <th>PMOS Score</th>
                 </tr>
               </thead>
 
@@ -386,7 +386,7 @@ function App() {
                 <tr>
                   <th>Food</th>
                   <th>Category</th>
-                  <th>PCOS Score</th>
+                  <th>PMOS Score</th>
                 </tr>
               </thead>
 
@@ -430,7 +430,7 @@ function App() {
                   <th>Food</th>
                   <th>GI</th>
                   <th>GI Category</th>
-                  <th>PCOS Score</th>
+                  <th>PMOS Score</th>
                 </tr>
               </thead>
 
@@ -483,7 +483,7 @@ function App() {
       )}
 
       <footer>
-        <p>&copy; 2026 PCOS Food App developed by Osas Ekhator. All rights reserved.</p>
+        <p>&copy; 2026 PMOS Food App developed by Osas Ekhator. All rights reserved.</p>
       </footer>
     </div>
   );
